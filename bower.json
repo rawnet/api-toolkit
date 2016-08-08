@@ -19,6 +19,7 @@
     "**/.*",
     "README.md",
     "example.html",
-    "api.php"
+    "api.php",
+    "bower.json"
   ]
 }

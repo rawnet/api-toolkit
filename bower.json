@@ -1,0 +1,24 @@
+{
+  "name": "api-toolkit",
+  "description": "A toolkit for interacting with APIs",
+  "homepage": "https://github.com/rawnet/api-toolkit",
+  "authors": [
+    "Simon Sturgess - @dahliacreative"
+  ],
+  "keywords": [
+    "api toolkit"
+  ],
+  "license": "MIT",
+  "main": [
+    "api.toolkit.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "ignore": [
+    "**/.*",
+    "README.md",
+    "example.html",
+    "api.php"
+  ]
+}

@@ -37,29 +37,44 @@
       <!-- / Handlebars Template -->
     </ul>
 
+    <ul class="paginator">
+      
+    </ul>
+
     <script>
 
     // Initialise a session instance
-    var session = new API.Session();
+    var session = new API.Session({
+      form: $('#posts')
+    });
 
     // Initialise a listing instance
     var listing = new API.Listing({
       element: $('.posts'),
       template: Handlebars.compile($('#post').html()),
       animationClass: 'posts--is-visible',
-      anmationDuration: 500
+      animationDuration: 500
+    });
+
+    // Initialise a paginator instance
+    var paginator = new API.Paginator({
+      element: $('.paginator'),
+      input: $('#page'),
+      session: session
     });
 
     // On a successful connection
     session.on('success', handleResponse);
 
     // Make the call
-    session.connect($('#posts'));
+    session.connect();
 
     // Handle the response
     function handleResponse() {
       // Render the listing
       listing.render(this.response.items);
+      // Render the paginator
+      paginator.render(this.response.page, this.response.total);
     }
 
     </script>

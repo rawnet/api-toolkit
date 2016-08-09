@@ -1,7 +1,8 @@
 var API = {};
 
 // SESSION OBJECT
-API.Session = function() {
+API.Session = function(options) {
+  this.form = options.form;
   this.events = {
     success: function() {},
     error: function() {},
@@ -13,11 +14,10 @@ API.Session.prototype.on = function(event, callback) {
   this.events[event] = callback;
 };
 
-API.Session.prototype.connect = function(form) {
-  this.form = form;
-  this.data = form.serialize();
-  this.method = form.attr('method');
-  this.endpoint = form.attr('action');
+API.Session.prototype.connect = function() {
+  this.data = this.form.serialize();
+  this.method = this.form.attr('method');
+  this.endpoint = this.form.attr('action');
 
   this.events.before.call(this);
 
@@ -66,3 +66,40 @@ API.Listing.prototype.render = function(items) {
     this.events.after.call(this);
   }.bind(this), timeout);
 };
+
+// PAGINATOR OBJECT
+API.Paginator = function(options) {
+  this.options = options;
+  this.events = {
+    before: function() {},
+    after: function() {}
+  }
+}
+
+API.Paginator.prototype.render = function(page, total) {
+  this.options.element.empty();
+  this.currentPage = page;
+  this.totalPages = total;
+  this.events.before.call(this);
+  for(var i = 1; i < total + 1; i++) {
+    var classes = i === page ? 'paginator__button paginator__button--is-active' : 'paginator__button';
+    var button = $('<button/>', {
+      text: i,
+      class: classes
+    });
+    if(i === page) {
+      button.attr('disabled', true);
+    }
+    button.on('click', function(e) {
+      this.newPage = $(e.currentTarget).text();
+      this.update.call(this);
+    }.bind(this));
+    this.options.element.append(button);
+  }
+  this.events.after.call(this);
+}
+
+API.Paginator.prototype.update = function() {
+  this.options.input.val(this.newPage);
+  this.options.session.connect();
+}

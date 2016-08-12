@@ -1,0 +1,17 @@
+<snippet>
+  <content><![CDATA[
+var session = new API.Session({
+  form: ${1: form}
+});
+
+session.on('success', handleResponse);
+
+session.connect();
+
+function handleResponse() {
+  ${2}
+}
+]]></content>
+  <tabTrigger>API.Session</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

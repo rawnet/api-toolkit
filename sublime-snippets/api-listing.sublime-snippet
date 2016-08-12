@@ -1,0 +1,12 @@
+<snippet>
+  <content><![CDATA[
+var listing = new API.Listing({
+  element: ${1:element},
+  template: ${2:template},
+  animationClass: '${3:class}',
+  animationDuration: ${4:500}
+});
+]]></content>
+  <tabTrigger>API.Listing</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

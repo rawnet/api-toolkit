@@ -1,0 +1,11 @@
+<snippet>
+  <content><![CDATA[
+var paginator = new API.Paginator({
+  element: ${1:element},
+  input: ${2:input},
+  session: ${3:session}
+});
+]]></content>
+  <tabTrigger>API.Paginator</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

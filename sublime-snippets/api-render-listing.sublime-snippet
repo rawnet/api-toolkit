@@ -1,0 +1,7 @@
+<snippet>
+  <content><![CDATA[
+listing.render(${1:this.response.items});
+]]></content>
+  <tabTrigger>API.Listing.render</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

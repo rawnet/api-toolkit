@@ -3,7 +3,7 @@
 $page1 = 
 [
   "page"=>1,
-  "total"=>3,
+  "total"=>10,
   "items" => [
     [
       "userId"=> 1,
@@ -40,7 +40,7 @@ $page1 =
 $page2 = 
 [
   "page"=>2,
-  "total"=>3,
+  "total"=>10,
   "items" => [
     [
       "userId"=> 1,
@@ -77,7 +77,266 @@ $page2 =
 $page3 =
 [
   "page"=>3,
-  "total"=>3,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page4 =
+[
+  "page"=>4,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page5 =
+[
+  "page"=>5,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page6 =
+[
+  "page"=>6,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page7 =
+[
+  "page"=>7,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page8 =
+[
+  "page"=>8,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page9 =
+[
+  "page"=>9,
+  "total"=>10,
+  "items" => [
+    [
+      "userId"=> 2,
+      "id"=> 11,
+      "title"=> "et ea vero quia laudantium autem",
+      "body"=> "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 12,
+      "title"=> "in quibusdam tempore odit est dolorem",
+      "body"=> "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 13,
+      "title"=> "dolorum ut in voluptas mollitia et saepe quo animi",
+      "body"=> "aut dicta possimus sint mollitia voluptas commodi quo doloremque\niste corrupti reiciendis voluptatem eius rerum\nsit cumque quod eligendi laborum minima\nperferendis recusandae assumenda consectetur porro architecto ipsum ipsam"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 14,
+      "title"=> "voluptatem eligendi optio",
+      "body"=> "fuga et accusamus dolorum perferendis illo voluptas\nnon doloremque neque facere\nad qui dolorum molestiae beatae\nsed aut voluptas totam sit illum"
+    ],
+    [
+      "userId"=> 2,
+      "id"=> 15,
+      "title"=> "eveniet quod temporibus",
+      "body"=> "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae"
+    ]
+  ]
+];
+$page10 =
+[
+  "page"=>10,
+  "total"=>10,
   "items" => [
     [
       "userId"=> 2,
@@ -112,14 +371,7 @@ $page3 =
   ]
 ];
 
-$page = $_GET['posts']['page'];
-
-if($page === "1") {
-  echo json_encode($page1);
-} elseif($page === "2") {
-  echo json_encode($page2);
-} elseif($page === "3") {
-  echo json_encode($page3);
-}
+$page = 'page'.(int)$_GET['posts']['page'];
+echo json_encode($$page);
 
 die();

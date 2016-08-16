@@ -60,7 +60,10 @@
     var paginator = new API.Paginator({
       element: $('.paginator'),
       input: $('#page'),
-      session: session
+      session: session,
+      limit: 6,
+      arrows: true,
+      ends: true
     });
 
     // On a successful connection

@@ -69,7 +69,9 @@ API.Listing.prototype.render = function(items) {
 
 // PAGINATOR OBJECT
 API.Paginator = function(options) {
-  this.options = options;
+  this.options = $.extend({
+    limit: 6
+  }, options);
   this.events = {
     before: function() {},
     after: function() {}
@@ -81,21 +83,76 @@ API.Paginator.prototype.render = function(page, total) {
   this.currentPage = page;
   this.totalPages = total;
   this.events.before.call(this);
-  for(var i = 1; i < total + 1; i++) {
+
+  var range = Math.floor(this.options.limit / 2 - 1),
+      start = this.currentPage - range < 1 ? 1 : this.currentPage - range,
+      start = start + this.options.limit > this.totalPages ? this.totalPages - (this.options.limit - 1) : start,
+      last = this.options.limit + start > this.totalPages ? this.totalPages : this.options.limit + start - 1;
+
+  for(var i = start; i < last + 1; i++) {
     var classes = i === page ? 'paginator__button paginator__button--is-active' : 'paginator__button';
     var button = $('<button/>', {
       text: i,
-      class: classes
+      class: classes,
+      disabled: i === page
     });
-    if(i === page) {
-      button.attr('disabled', true);
-    }
     button.on('click', function(e) {
       this.newPage = $(e.currentTarget).text();
       this.update.call(this);
     }.bind(this));
     this.options.element.append(button);
   }
+
+  if(this.options.arrows) {
+    var prev = $('<button/>', {
+      text: '<',
+      class: 'paginator__button paginator__button--previous',
+      disabled: this.currentPage === 1
+    });
+    var next = $('<button/>', {
+      text: '>',
+      class: 'paginator__button paginator__button--next',
+      disabled: this.currentPage === this.totalPages
+    });
+
+    prev.on('click', function() {
+      this.newPage = this.currentPage - 1;
+      this.update.call(this);
+    }.bind(this));
+    next.on('click', function() {
+      this.newPage = this.currentPage + 1;
+      this.update.call(this);
+    }.bind(this));
+
+    this.options.element.prepend(prev);
+    this.options.element.append(next);
+  }
+
+  if(this.options.ends) {
+    var start = $('<button/>', {
+      text: '<<',
+      class: 'paginator__button paginator__button--start',
+      disabled: this.currentPage === 1
+    });
+    var end = $('<button/>', {
+      text: '>>',
+      class: 'paginator__button paginator__button--ends',
+      disabled: this.currentPage === this.totalPages
+    });
+
+    start.on('click', function() {
+      this.newPage = 1;
+      this.update.call(this);
+    }.bind(this));
+    end.on('click', function() {
+      this.newPage = this.totalPages;
+      this.update.call(this);
+    }.bind(this));
+    
+    this.options.element.prepend(start);
+    this.options.element.append(end);
+  }
+
   this.events.after.call(this);
 }
 

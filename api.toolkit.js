@@ -119,6 +119,41 @@ API.Paginator.prototype.render = function(page, total) {
     this.options.element.append(button);
   }
 
+  if(this.options.ellipsis) {
+    if(start > 1) {
+      var ellipsisBefore = $('<span/>', {
+        text: '...',
+        class: 'paginator__ellipsis'
+      });
+      var first = $('<button/>', {
+        text: '1',
+        class: 'paginator__button'
+      });
+      first.on('click', function() {
+        this.newPage = 1;
+        this.update.call(this);
+      }.bind(this));
+      this.options.element.prepend(ellipsisBefore);
+      this.options.element.prepend(first);
+    }
+    if(last < this.totalPages) {
+      var ellipsisAfter = $('<span/>', {
+        text: '...',
+        class: 'paginator__ellipsis'
+      });
+      var last = $('<button/>', {
+        text: this.totalPages,
+        class: 'paginator__button'
+      });
+      last.on('click', function() {
+        this.newPage = this.totalPages;
+        this.update.call(this);
+      }.bind(this));
+      this.options.element.append(ellipsisAfter);
+      this.options.element.append(last);
+    }
+  }
+
   if(this.options.arrows) {
     var prev = $('<button/>', {
       text: '<',

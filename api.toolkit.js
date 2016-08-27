@@ -2,7 +2,16 @@ var API = {};
 
 // SESSION OBJECT
 API.Session = function(options) {
-  this.form = options.form;
+  if(options) {
+    this.options = options;
+    if(!this.options.endpoint && !this.options.form) {
+      console.error('API Toolkit Error: Please provide a valid endpoint or a form.');
+      return;
+    }
+  } else {
+    console.error('API Toolkit Error: No parameters provided.');
+    return;
+  }
   this.events = {
     success: function() {},
     error: function() {},
@@ -15,9 +24,15 @@ API.Session.prototype.on = function(event, callback) {
 };
 
 API.Session.prototype.connect = function() {
-  this.data = this.form.serialize();
-  this.method = this.form.attr('method');
-  this.endpoint = this.form.attr('action');
+  if(this.options.form) {
+    this.data = this.options.form.serialize();
+    this.method = this.options.form.attr('method');
+    this.endpoint = this.options.form.attr('action');
+  } else {
+    this.data = this.options.data || null;
+    this.method = this.options.method || 'GET';
+    this.endpoint = this.options.endpoint;
+  }
 
   this.events.before.call(this);
 
@@ -87,6 +102,7 @@ API.Paginator.prototype.render = function(page, total) {
   var range = Math.floor(this.options.limit / 2 - 1),
       start = this.currentPage - range < 1 ? 1 : this.currentPage - range,
       start = start + this.options.limit > this.totalPages ? this.totalPages - (this.options.limit - 1) : start,
+      start = start < 1 ? 1 : start,
       last = this.options.limit + start > this.totalPages ? this.totalPages : this.options.limit + start - 1;
 
   for(var i = start; i < last + 1; i++) {

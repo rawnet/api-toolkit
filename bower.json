@@ -2,7 +2,6 @@
   "name": "api-toolkit",
   "description": "A toolkit for interacting with APIs",
   "homepage": "https://github.com/rawnet/api-toolkit",
-  "version": "v1.0.0",
   "authors": [
     "Simon Sturgess - @dahliacreative"
   ],

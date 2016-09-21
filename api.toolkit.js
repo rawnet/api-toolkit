@@ -98,6 +98,9 @@ API.Paginator.prototype.render = function(page, total) {
   this.currentPage = page;
   this.totalPages = total;
   this.events.before.call(this);
+  
+  var isHidden = total < 2;
+  this.options.element.toggleClass('paginator--is-empty', isHidden);
 
   var range = Math.floor(this.options.limit / 2 - 1),
       start = this.currentPage - range < 1 ? 1 : this.currentPage - range;

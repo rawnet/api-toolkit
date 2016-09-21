@@ -16,7 +16,7 @@ API.Session = function(options) {
     success: function() {},
     error: function() {},
     before: function() {}
-  }
+  };
 };
 
 API.Session.prototype.on = function(event, callback) {
@@ -58,7 +58,7 @@ API.Listing = function(options) {
   this.events = {
     before: function() {},
     after: function() {}
-  }
+  };
 };
 
 API.Listing.prototype.on = function(event, callback) {
@@ -90,8 +90,8 @@ API.Paginator = function(options) {
   this.events = {
     before: function() {},
     after: function() {}
-  }
-}
+  };
+};
 
 API.Paginator.prototype.render = function(page, total) {
   this.options.element.empty();
@@ -100,10 +100,10 @@ API.Paginator.prototype.render = function(page, total) {
   this.events.before.call(this);
 
   var range = Math.floor(this.options.limit / 2 - 1),
-      start = this.currentPage - range < 1 ? 1 : this.currentPage - range,
+      start = this.currentPage - range < 1 ? 1 : this.currentPage - range;
       start = start + this.options.limit > this.totalPages ? this.totalPages - (this.options.limit - 1) : start,
-      start = start < 1 ? 1 : start,
-      last = this.options.limit + start > this.totalPages ? this.totalPages : this.options.limit + start - 1;
+      start = start < 1 ? 1 : start;
+  var last = this.options.limit + start > this.totalPages ? this.totalPages : this.options.limit + start - 1;
 
   for(var i = start; i < last + 1; i++) {
     var classes = i === page ? 'paginator__button paginator__button--is-active' : 'paginator__button';
@@ -141,16 +141,16 @@ API.Paginator.prototype.render = function(page, total) {
         text: '...',
         class: 'paginator__ellipsis'
       });
-      var last = $('<button/>', {
+      var lastButton = $('<button/>', {
         text: this.totalPages,
         class: 'paginator__button'
       });
-      last.on('click', function() {
+      lastButton.on('click', function() {
         this.newPage = this.totalPages;
         this.update.call(this);
       }.bind(this));
       this.options.element.append(ellipsisAfter);
-      this.options.element.append(last);
+      this.options.element.append(lastButton);
     }
   }
 
@@ -180,34 +180,34 @@ API.Paginator.prototype.render = function(page, total) {
   }
 
   if(this.options.ends) {
-    var start = $('<button/>', {
+    var startButton = $('<button/>', {
       text: '<<',
       class: 'paginator__button paginator__button--start',
       disabled: this.currentPage === 1
     });
-    var end = $('<button/>', {
+    var endButton = $('<button/>', {
       text: '>>',
       class: 'paginator__button paginator__button--ends',
       disabled: this.currentPage === this.totalPages
     });
 
-    start.on('click', function() {
+    startButton.on('click', function() {
       this.newPage = 1;
       this.update.call(this);
     }.bind(this));
-    end.on('click', function() {
+    endButton.on('click', function() {
       this.newPage = this.totalPages;
       this.update.call(this);
     }.bind(this));
     
-    this.options.element.prepend(start);
-    this.options.element.append(end);
+    this.options.element.prepend(startButton);
+    this.options.element.append(endButton);
   }
 
   this.events.after.call(this);
-}
+};
 
 API.Paginator.prototype.update = function() {
   this.options.input.val(this.newPage);
   this.options.session.connect();
-}
+};

@@ -40,8 +40,10 @@ API.Session.prototype.connect = function() {
     url: this.endpoint,
     method: this.method,
     data: this.data,
-    success: function(response) {
+    success: function(response, statusText, jqxhr) {
       this.response = response;
+      this.response.status = jqxhr.status;
+      this.response.statusText = jqxhr.statusText;
       this.events.success.call(this);
     }.bind(this),
     error: function(jqxhr) {

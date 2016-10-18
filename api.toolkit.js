@@ -67,18 +67,22 @@ API.Listing.prototype.on = function(event, callback) {
   this.events[event] = callback;
 };
 
-API.Listing.prototype.render = function(items) {
+API.Listing.prototype.render = function(items, isMessage) {
   var timeout = this.firstLoad ? 0 : this.options.animationDuration || 0;
-  
+
   this.firstLoad = false;
   this.events.before.call(this);
   this.options.element.removeClass(this.options.animationClass);
 
   setTimeout(function() {
     this.options.element.empty();
-    items.forEach(function(item) {
-      this.options.element.append(this.options.template(item));
-    }.bind(this));
+    if(isMessage) {
+        this.options.element.append(items);
+    } else {
+        items.forEach(function(item) {
+          this.options.element.append(this.options.template(item));
+        }.bind(this));
+    }
     this.options.element.addClass(this.options.animationClass);
     this.events.after.call(this);
   }.bind(this), timeout);

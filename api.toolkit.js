@@ -41,7 +41,7 @@ API.Session.prototype.connect = function() {
     method: this.method,
     data: this.data,
     success: function(response, statusText, jqxhr) {
-      this.response = response;
+      this.response = response || {};
       this.response.status = jqxhr.status;
       this.response.statusText = jqxhr.statusText;
       this.events.success.call(this);

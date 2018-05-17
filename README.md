@@ -6,46 +6,60 @@ A toolkit for interacting with APIs
 
 ## Usage
 
+To use the toolkit, you will need to import it at the top of the module you intend to use it.
+```
+import { Session, Listing, Paginator } from './../components/api-toolkit'
+```
+
 ### Session
 ```
-  var session = new API.Session();
-  session.on('success', function() {
+  this.session = new Session({
+    form: $('form')
+  })
+  this.session.on('success', function() {
     console.log(this.response);
-  });
-  session.on('error', function() {
+  })
+  this.session.on('error', function() {
     console.log(this.response);
-  });
-  session.connect($('form'));
+  })
 ```
 
 ### Listing
 ```
-  var listing = new API.Listing({
+  this.listing = new Listing({
     element: $('.listing'),
-    template: handlebarsTemplate,
-    animationClass: 'is-visible',
-    animationDuration: 300
+    template: template,
+    appendItems: true // (optional) Appends new items to bottom of container rather than replace. This can be used for a 'load more' event.
+    animationClass: 'is-visible', // (optional)
+    animationDuration: 300 (optional)
   });
+  
+```
+#### Render 
+Listing render function takes an array of items. Most likely this will be called in conjunction with your session success function.
+```
+this.session.on('success', function() {
+  listing.render(this.reponse)
+})
 
-  listing.render(items);
+Listing render function also accepts an HTML String as the first parameter if you pass in a second parameter of true. This is useful for when filtering returns no results:
 ```
-Listing render function takes an array of items, or an HTML String if you pass in a second parameter of true, this is useful for when filtering returns no results:
+  this.session.on('success', function() {
+    if(this.response.results.length === 0) {
+     listing.render('<p>No results found</p>', true)
+    }
+  })
 ```
-  listing.render('<p>No results found</p>', true);
-```
-
 
 ### Paginator
 ```
-  var paginator = new API.Paginator({
+  this.paginator = new Paginator({
     element: $('.pagination'),
     input: $('#page-input'),
-    session: session,
-    limit: 6,
-    arrows: true,
-    ends: true,
-    ellipsis: true
+    session: this.session,
+    arrows: true, // (optional)
+    ends: true // (optional)
   });
 
-  paginator.render(currentPage, totalPages);
+  paginator.render(response.pagination);
 ```

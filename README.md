@@ -67,7 +67,7 @@ paginator.render(response.pagination);
 ```
 
 ### Creating templates
-Templates for listing items need to passed to the listing to render successfully. We encourage these to be created using template literals but another templating language could be utilised.
+Templates for listing items need to be passed to the listing to render successfully. We encourage these to be created using template literals but another templating language could be utilised.
 ```
 const template = (data) => (
 `<article class="card">
@@ -75,7 +75,6 @@ const template = (data) => (
 </article>`)
 
 export default template
-
 ```
 ```
 import article from '../classes/news-article'

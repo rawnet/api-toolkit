@@ -69,7 +69,7 @@ class Listing {
         this.options.element.removeClass(this.options.animationClass)
 
         setTimeout(() => {
-            if(!options.appendItems) {
+            if(!this.options.appendItems) {
                 this.options.element.empty()
             }
             if (isMessage) {
@@ -116,39 +116,50 @@ class Paginator {
     on(event, callback) {
         this.events[event] = callback
     }
-    render(pagination) {
+    render(page, total) {
+        this.currentPage = page
+        this.totalPages = total
+
+        const range = Math.floor(this.options.limit / 2 - 1)
+        let start = this.currentPage - range < 1 ? 1 : this.currentPage - range
+        start = start + this.options.limit > this.totalPages ? this.totalPages - (this.options.limit - 1) : start
+        start = start < 1 ? 1 : start
+        const last = this.options.limit + start > this.totalPages ? this.totalPages : this.options.limit + start - 1
+
         this.options.element.empty()
-        pagination.pagesInRange.map((page) => {
-            const classes = page === pagination.page ? 'button button--square button--active button--spaced' : 'button button--square button--spaced'
+
+        for(var i = start; i < last + 1; i++) {
+            const classes = i === this.currentPage ? 'button button--active' : 'button'
+            classes += this.options.classes
             const button = $('<button/>', {
-                text: page,
+                text: i,
                 class: classes,
-                disabled: page === pagination.page
+                disabled: i === this.currentPage
             })
             button.on('click', () => {
-                this.newPage = page
+                this.newPage = i
                 this.update.call(this)
             })
             this.options.element.append(button)
         })
         if(this.options.arrows) {
             const prev = $('<button/>', {
-              text: '<',
-              class: 'paginator__button paginator__button--previous',
-              disabled: this.currentPage === 1
+                text: 'Prev',
+                class: 'paginator__button paginator__button--previous',
+                disabled: this.currentPage === 1
             })
             const next = $('<button/>', {
-              text: '>',
-              class: 'paginator__button paginator__button--next',
-              disabled: this.currentPage === this.totalPages
+                text: 'Next',
+                class: 'paginator__button paginator__button--next',
+                disabled: this.currentPage === this.totalPages
             })
             prev.on('click', function() {
-              this.newPage = this.currentPage - 1;
-              this.update.call(this);
+                this.newPage = this.currentPage - 1
+                this.update.call(this)
             }.bind(this))
             next.on('click', function() {
-              this.newPage = this.currentPage + 1;
-              this.update.call(this);
+                this.newPage = this.currentPage + 1
+                this.update.call(this)
             }.bind(this))
 
             this.options.element.prepend(prev)
@@ -156,22 +167,22 @@ class Paginator {
         }
         if(this.options.ends) {
             const startButton = $('<button/>', {
-              text: '<<',
-              class: 'paginator__button paginator__button--start',
-              disabled: this.currentPage === 1
+                text: 'First',
+                class: 'paginator__button paginator__button--start',
+                disabled: this.currentPage === 1
             })
             const endButton = $('<button/>', {
-              text: '>>',
-              class: 'paginator__button paginator__button--ends',
-              disabled: this.currentPage === this.totalPages
+                text: 'Last',
+                class: 'paginator__button paginator__button--ends',
+                disabled: this.currentPage === this.totalPages
             })
             startButton.on('click', function() {
-              this.newPage = 1;
-              this.update.call(this);
+                this.newPage = 1
+                this.update.call(this)
             }.bind(this))
             endButton.on('click', function() {
-              this.newPage = this.totalPages;
-              this.update.call(this);
+                this.newPage = this.totalPages
+                this.update.call(this)
             }.bind(this))
             
             this.options.element.prepend(startButton)
@@ -184,3 +195,59 @@ class Paginator {
     }
 }
 
+class LoadMore {
+    constructor(options) {
+        if (options) {
+            if (!options.element) {
+                console.error('API:LoadMore:Error: Please provide a load more container')
+                return
+            }
+            if (!options.input) {
+                console.error('API:LoadMore:Error: Please provide a page input')
+                return
+            }
+            if (!options.session) {
+                console.error('API:LoadMore:Error: Please provide an API Session')
+                return
+            }
+        } else {
+            console.error('API:LoadMore:Error: No options provided')
+            return
+        }
+        this.options = $.extend({
+            text: 'Load More',
+            classes: 'button'
+        }, options);
+        this.events = {
+            before: () => {},
+            after: () => {}
+        }
+    }
+    on(event, callback) {
+        this.events[event] = callback
+    }
+    render(pagination) {
+        this.options.element.empty()
+        const button = $('<button/>', {
+            text: this.options.text,
+            class: this.options.classes,
+            disabled: this.currentPage === this.totalPages
+        })
+        button.on('click', () => {
+            this.newPage = page
+            this.update.call(this)
+        })
+        this.options.element.append(button)
+    }
+    update() {
+        this.options.input.val(this.newPage)
+        this.options.session.connect()
+    }
+}
+
+export {
+    Session,
+    Listing,
+    Paginator,
+    LoadMore
+}

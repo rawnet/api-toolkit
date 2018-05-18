@@ -24,6 +24,8 @@ this.session.on('success', function() {
 this.session.on('error', function() {
   console.log(this.response);
 })
+
+this.session.connect()
 ```
 
 ### Listing
@@ -31,7 +33,8 @@ this.session.on('error', function() {
 this.listing = new Listing({
   element: $('.listing'),
   template: template,
-  appendItems: true // (optional) Appends new items to bottom of container rather than replace. This can be used for a 'load more' event.
+  limit: 3, // NUmber of pages to display
+  appendItems: true // (optional) Appends new items to bottom of container rather than replace. This can be used with a 'load more' event.
   animationClass: 'is-visible', // (optional)
   animationDuration: 300 (optional)
 })
@@ -59,8 +62,22 @@ this.paginator = new Paginator({
   element: $('.pagination'),
   input: $('#page-input'),
   session: this.session,
+  classes 'button--filled', // (optional) 'button' is a default class, so no need to define it
   arrows: true, // (optional)
   ends: true // (optional)
+});
+
+paginator.render(currentPage, totalPages)
+```
+
+### Load More
+```
+this.loadMore = new loadMore({
+  element: $('.load-more'),
+  input: $('#page-input'),
+  session: this.session,
+  text: 'Load items', // (optional )
+  classes 'button button--filled' // (optional)
 });
 
 paginator.render(response.pagination);
@@ -74,7 +91,7 @@ const template = (data) => (
     <h1 class="card__heading">${data.name}</h1>
 </article>`)
 
-export default template
+export default templatei 
 ```
 ```
 import article from '../classes/news-article'

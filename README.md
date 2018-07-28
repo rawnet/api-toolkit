@@ -44,7 +44,7 @@ this.session.connect({
   data: 'search=searchTerm',
   limit: 10
 })
-``
+```
 
 ### Listing
 ```

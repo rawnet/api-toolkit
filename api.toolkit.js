@@ -18,7 +18,10 @@ class Session {
     on(event, callback) {
         this.events[event] = callback
     }
-    connect() {
+    connect(options) {
+        if (options) {
+            $.extend(this.options, options)
+        }
         if (this.options.form) {
             this.data = this.options.form.serialize()
             this.method = this.options.form.attr('method')
@@ -128,9 +131,9 @@ class Paginator {
 
         this.options.element.empty()
 
-        for(var i = start; i < last + 1; i++) {
-            const classes = i === this.currentPage ? 'button button--active' : 'button'
-            classes += this.options.classes
+        for(let i = start; i < last + 1; i++) {
+            let classes = i === this.currentPage ? 'button button--active' : 'button'
+            classes += this.options.classes ? ' ' + this.options.classes : ''
             const button = $('<button/>', {
                 text: i,
                 class: classes,
@@ -141,8 +144,22 @@ class Paginator {
                 this.update.call(this)
             })
             this.options.element.append(button)
-        })
-        if(this.options.arrows) {
+        }
+        if (this.options.ellipsis) {
+            if (this.currentPage <= (this.totalPages - this.options.limit)) {
+                const end = $('<button/>', {
+                    text: this.totalPages,
+                    class: 'paginator__button paginator__button--next'
+                })
+                end.on('click', function() {
+                    this.newPage = this.totalPages
+                    this.update.call(this)
+                }.bind(this))
+                this.options.element.append('<span class="ellipses">...</span>')
+                this.options.element.append(end)
+            }
+        }
+        if (this.options.arrows) {
             const prev = $('<button/>', {
                 text: 'Prev',
                 class: 'paginator__button paginator__button--previous',
@@ -165,7 +182,7 @@ class Paginator {
             this.options.element.prepend(prev)
             this.options.element.append(next)
         }
-        if(this.options.ends) {
+        if (this.options.ends) {
             const startButton = $('<button/>', {
                 text: 'First',
                 class: 'paginator__button paginator__button--start',
@@ -226,7 +243,9 @@ class LoadMore {
     on(event, callback) {
         this.events[event] = callback
     }
-    render(pagination) {
+    render(page, total) {
+        this.currentPage = page     
+        this.totalPages = total
         this.options.element.empty()
         const button = $('<button/>', {
             text: this.options.text,
@@ -234,7 +253,7 @@ class LoadMore {
             disabled: this.currentPage === this.totalPages
         })
         button.on('click', () => {
-            this.newPage = page
+            this.newPage = this.currentPage + 1
             this.update.call(this)
         })
         this.options.element.append(button)

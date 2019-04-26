@@ -137,7 +137,8 @@ class Paginator {
             const button = $('<button/>', {
                 text: i,
                 class: classes,
-                disabled: i === this.currentPage
+                disabled: i === this.currentPage,
+                type: 'button'
             })
             button.on('click', () => {
                 this.newPage = i
@@ -149,7 +150,8 @@ class Paginator {
             if (this.currentPage <= (this.totalPages - this.options.limit)) {
                 const end = $('<button/>', {
                     text: this.totalPages,
-                    class: 'paginator__button paginator__button--next'
+                    class: 'paginator__button paginator__button--next',
+                    type: 'button'
                 })
                 end.on('click', function() {
                     this.newPage = this.totalPages
@@ -163,7 +165,8 @@ class Paginator {
             const prev = $('<button/>', {
                 text: 'Prev',
                 class: 'paginator__button paginator__button--previous',
-                disabled: this.currentPage === 1
+                disabled: this.currentPage === 1,
+                type: 'button'
             })
             const next = $('<button/>', {
                 text: 'Next',
@@ -186,12 +189,14 @@ class Paginator {
             const startButton = $('<button/>', {
                 text: 'First',
                 class: 'paginator__button paginator__button--start',
-                disabled: this.currentPage === 1
+                disabled: this.currentPage === 1,
+                type: 'button'
             })
             const endButton = $('<button/>', {
                 text: 'Last',
                 class: 'paginator__button paginator__button--ends',
-                disabled: this.currentPage === this.totalPages
+                disabled: this.currentPage === this.totalPages,
+                type: 'button'
             })
             startButton.on('click', function() {
                 this.newPage = 1
